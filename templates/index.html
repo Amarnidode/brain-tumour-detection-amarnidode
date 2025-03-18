@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <h1>BrainScan</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/" class="active">Home</a></li>
+                    <li><a href="/detect">Detect</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Advanced Brain Tumor Detection</h1>
+                <p>Using artificial intelligence to help identify brain tumors from MRI scans</p>
+                <a href="/detect" class="btn btn-primary">Try Detection</a>
+            </div>
+            <div class="hero-image">
+                <img src="{{ url_for('static', filename='images/bg.png') }}" alt="Brain MRI Scan">
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-upload"></i>
+                    </div>
+                    <h3>Upload</h3>
+                    <p>Upload your MRI scan image through our secure platform</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Process</h3>
+                    <p>Our AI model analyzes the image using deep learning</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Results</h3>
+                    <p>Get instant results with tumor classification and confidence score</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="info">
+        <div class="container">
+            <div class="info-content">
+                <h2>About Brain Tumors</h2>
+                <p>Brain tumors are masses or growths of abnormal cells in the brain. Many different types of brain tumors exist. Some brain tumors are noncancerous (benign), and some brain tumors are cancerous (malignant).</p>
+                <p>Our system can detect and classify the following types of tumors:</p>
+                <ul>
+                    <li><strong>Glioma</strong> - A type of tumor that occurs in the brain and spinal cord</li>
+                    <li><strong>Meningioma</strong> - A tumor that arises from the meninges — the membranes that surround the brain and spinal cord</li>
+                    <li><strong>Pituitary</strong> - A tumor that forms in the pituitary gland at the base of the brain</li>
+                    <li><strong>No Tumor</strong> - Normal brain tissue without tumor presence</li>
+                </ul>
+                <a href="/detect" class="btn btn-secondary">Start Detection</a>
+            </div>
+            
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 BrainScan - Brain Tumor Detection System</p>
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="/detect">Detect</a>
+                <a href="/contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+

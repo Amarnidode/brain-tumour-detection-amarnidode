@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detect Brain Tumor - BrainScan</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <h1>BrainScan</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/detect" class="active">Detect</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="detect-section">
+        <div class="container">
+            <h1>Brain Tumor Detection</h1>
+            <p class="detect-intro">Upload an MRI scan image to detect and classify brain tumors using our AI model.</p>
+            
+            <div class="detect-container">
+                <div class="upload-container">
+                    <h2>Upload MRI Scan</h2>
+                    <form action="/detect" method="POST" enctype="multipart/form-data" id="upload-form">
+                        <div class="file-input-container">
+                            <input type="file" name="file" id="file-input" accept="image/*" required>
+                            <label for="file-input" class="file-label">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Choose a file</span>
+                            </label>
+                            <div id="file-name" class="file-name">No file chosen</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Analyze Image</button>
+                    </form>
+                </div>
+                
+                <div class="result-container {% if result %}active{% endif %}">
+                    {% if result %}
+                        <div class="result-image">
+                            <h3>Uploaded Image</h3>
+                            <img src="{{ file_path }}" alt="Uploaded MRI Scan">
+                        </div>
+                        <div class="result-details">
+                            <h3>Detection Results</h3>
+                            <div class="result-box {% if 'No Tumor' in result %}no-tumor{% else %}tumor{% endif %}">
+                                <div class="result-icon">
+                                    {% if 'No Tumor' in result %}
+                                        <i class="fas fa-check-circle"></i>
+                                    {% else %}
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    {% endif %}
+                                </div>
+                                <div class="result-text">
+                                    <h4>{{ result }}</h4>
+                                    <p>Confidence: {{ confidence }}</p>
+                                </div>
+                            </div>
+                            <div class="result-disclaimer">
+                                <p><strong>Disclaimer:</strong> This is an AI-assisted tool and should not replace professional medical diagnosis. Please consult with a healthcare professional for proper medical advice.</p>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="no-result">
+                            <i class="fas fa-upload"></i>
+                            <p>Upload an MRI scan to see results</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="detect-instructions">
+                <h3>Instructions</h3>
+                <ol>
+                    <li>Prepare a clear MRI scan image of the brain</li>
+                    <li>Click on "Choose a file" to select your image</li>
+                    <li>Click "Analyze Image" to process the scan</li>
+                    <li>View the results showing tumor classification and confidence score</li>
+                </ol>
+                <p class="note">Note: For best results, use high-quality MRI images in common formats (JPG, PNG).</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 BrainScan - Brain Tumor Detection System</p>
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="/detect">Detect</a>
+                <a href="/contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Display file name when selected
+        document.getElementById('file-input').addEventListener('change', function(e) {
+            const fileName = e.target.files[0] ? e.target.files[0].name : 'No file chosen';
+            document.getElementById('file-name').textContent = fileName;
+        });
+    </script>
+</body>
+</html>
+
